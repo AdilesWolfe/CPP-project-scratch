@@ -8,10 +8,10 @@ import datetime
 start= str((datetime.datetime.today()-datetime.timedelta(days=365)).strftime("%d-%m-%Y"))
 end=str(datetime.datetime.today().strftime("%d-%m-%Y"))
 
-sym="NHPC"
+sym="SBIN"
 ser="EQ"
 df=equity_history(sym,ser,start,end)
-#print(df.head())
+
 
 fig=go.Figure(data=[go.Candlestick(x=df['CH_TIMESTAMP'],
                     open=df['CH_OPENING_PRICE'],
