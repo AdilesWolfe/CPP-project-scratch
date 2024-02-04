@@ -9,8 +9,8 @@ import datetime
 app= dash.Dash()
 
 app.layout= html.Div([
-    html.Div([html.H1(children="Stock"),
-             html.Img(src="https://github.com/AdilesWolfe/CPP-project-scratch/blob/main/Assets/stock-icon.png")]),
+    html.Div([html.H1(children="Stock App"),
+             html.Img(src="Assets/stock-icon.png")],className="banner"),
     html.Label("DASH GRAPH"),
     html.Div(
         dcc.Input(
@@ -21,7 +21,7 @@ app.layout= html.Div([
         )
     ),
     html.Div(
-        style={'width':'900px', 'overflow':'auto'},
+        style={'width':'1100px', 'overflow':'auto'},
         children=[dcc.Graph(id="Stock Chart",
                   figure={})]
     )
@@ -35,7 +35,7 @@ app.layout= html.Div([
 def update_chart(stocks):
     if  stocks is None:
         return {}
-    start= str((datetime.datetime.today()-datetime.timedelta(days=365)).strftime("%d-%m-%Y"))
+    start= str((datetime.datetime.today()-datetime.timedelta(days=90)).strftime("%d-%m-%Y"))
     end=str(datetime.datetime.today().strftime("%d-%m-%Y"))
     sym=stocks
     ser="EQ"

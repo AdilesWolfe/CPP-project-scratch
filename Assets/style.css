@@ -7,9 +7,10 @@
 
 .banner h1 {
     color: antiquewhite;
-    padding-top: 10px;
+    padding-top: auto;
     margin-left: 2%;
     display: inline-block;
+    position: center;
 }
 
 .banner Img {
