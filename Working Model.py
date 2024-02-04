@@ -9,7 +9,8 @@ import datetime
 app= dash.Dash()
 
 app.layout= html.Div([
-    html.Div(html.H1(children="Hello World")),
+    html.Div([html.H1(children="Stock"),
+             html.Img(src="https://github.com/AdilesWolfe/CPP-project-scratch/blob/main/Assets/stock-icon.png")]),
     html.Label("DASH GRAPH"),
     html.Div(
         dcc.Input(
@@ -20,7 +21,7 @@ app.layout= html.Div([
         )
     ),
     html.Div(
-        style={'width':'500px', 'overflow':'auto'},
+        style={'width':'900px', 'overflow':'auto'},
         children=[dcc.Graph(id="Stock Chart",
                   figure={})]
     )

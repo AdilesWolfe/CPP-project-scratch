@@ -1,0 +1,20 @@
+.banner {
+    height: 70px;
+    margin: 0px -10px 10px;
+    background-color: #13bbbb;
+    border-radius: 2px;
+}
+
+.banner h1 {
+    color: antiquewhite;
+    padding-top: 10px;
+    margin-left: 2%;
+    display: inline-block;
+}
+
+.banner Img {
+    position: relative;
+    float: right;
+    right: 10px;
+    height: 75px;
+}
