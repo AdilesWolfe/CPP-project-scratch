@@ -11,21 +11,22 @@ app= dash.Dash()
 app.layout= html.Div([
     html.Div([html.H1(children="Stock App"),
              html.Img(src="Assets/stock-icon.png")],className="banner"),
-    html.Label("DASH GRAPH"),
     html.Div(
+        [html.Label("Enter a valid Indian Stock Code"),
+         html.Br(),
         dcc.Input(
             id='stock_input',
-            placeholder='Enter a valid Indian Stock Code',
+            placeholder='Ex: SBIN',
             type='text',
-            value=''
-        )
+            value='SBIN'
+        )]
     ),
     html.Div(
-        style={'width':'1100px', 'overflow':'auto'},
+        style={'width':'1100px', 'overflow':'auto', 'align':'center'},
         children=[dcc.Graph(id="Stock Chart",
-                  figure={})]
+                  figure={})],className="frame"
     )
-])
+],className="main-div")
 
 @app.callback(
     dash.dependencies.Output('Stock Chart', 'figure'),
@@ -39,7 +40,7 @@ def update_chart(stocks):
     end=str(datetime.datetime.today().strftime("%d-%m-%Y"))
     sym=stocks
     ser="EQ"
-    df=equity_history(sym,ser,start,end)
+    df=equity_history(stocks,ser,start,end)
 
     fig=go.Figure(data=[
         go.Candlestick(
@@ -48,7 +49,7 @@ def update_chart(stocks):
             high=df['CH_TRADE_HIGH_PRICE'],
             low=df['CH_TRADE_LOW_PRICE'],
             close=df['CH_CLOSING_PRICE']
-        )],layout=dict(title=sym, height=500, margin=dict(l=0, r=0,t=0,b=0))
+        )],layout=dict(title=sym, height=500, margin=dict(l=100, r=0,t=50,b=0))
         
     )
     return fig
