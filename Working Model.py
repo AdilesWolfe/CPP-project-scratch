@@ -19,7 +19,8 @@ app.layout= html.Div([
             placeholder='Ex: SBIN',
             type='text',
             value='SBIN'
-        )]
+        ),
+        html.Button(id="submit-button",n_clicks=0, children="Submit")],className="input"
     ),
     html.Div(
         style={'width':'1100px', 'overflow':'auto', 'align':'center'},
@@ -30,13 +31,14 @@ app.layout= html.Div([
 
 @app.callback(
     dash.dependencies.Output('Stock Chart', 'figure'),
-    [dash.dependencies.Input('stock_input', 'value')]
+    [dash.dependencies.Input("submit-button", "n_clicks")],
+    [dash.dependencies.State('stock_input', 'value')]
 )
 
-def update_chart(stocks):
+def update_chart(n_clicks,stocks):
     if  stocks is None:
         return {}
-    start= str((datetime.datetime.today()-datetime.timedelta(days=90)).strftime("%d-%m-%Y"))
+    start= str((datetime.datetime.today()-datetime.timedelta(days=365)).strftime("%d-%m-%Y"))
     end=str(datetime.datetime.today().strftime("%d-%m-%Y"))
     sym=stocks
     ser="EQ"
@@ -50,7 +52,6 @@ def update_chart(stocks):
             low=df['CH_TRADE_LOW_PRICE'],
             close=df['CH_CLOSING_PRICE']
         )],layout=dict(title=sym, height=500, margin=dict(l=100, r=0,t=50,b=0))
-        
     )
     return fig
 
