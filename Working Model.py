@@ -27,8 +27,8 @@ app.layout = html.Div([
             placeholder='Ex: SBIN',
             type='text',
             value='SBIN'
-        )
-    ], className="input"),
+        ),
+        html.Button(id="submit-button",n_clicks=0, children="Submit")],className="input"),
     html.Div(
         style={'width':'1100px', 'overflow':'auto', 'align':'center'},
         children=[dcc.Graph(id="Stock Chart", figure={})],
