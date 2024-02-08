@@ -22,26 +22,15 @@ app.layout = html.Div([
     html.Div([
         html.Label("Enter a valid Indian Stock Code"),
         html.Br(),
-app.layout = html.Div([
-    html.Div([
-        html.H1(children="Stock App"),
-        html.Img(src=f"data:image/png;base64,{encoded_image}", style={'width': '100px'})
-    ], className="banner"),
-    html.Div([
-        html.Label("Enter a valid Indian Stock Code"),
-        html.Br(),
         dcc.Input(
             id='stock_input',
             placeholder='Ex: SBIN',
             type='text',
             value='SBIN'
         )
-    ]),
+    ], className="input"),
     html.Div(
         style={'width':'1100px', 'overflow':'auto', 'align':'center'},
-        children=[dcc.Graph(id="Stock Chart", figure={})],
-        className="frame"
-        style={'width': '1100px', 'overflow': 'auto', 'align': 'center'},
         children=[dcc.Graph(id="Stock Chart", figure={})],
         className="frame"
     )
@@ -51,8 +40,6 @@ app.layout = html.Div([
     dash.dependencies.Output('Stock Chart', 'figure'),
     [dash.dependencies.Input('stock_input', 'value')]
 )
-def update_chart(stocks):
-    if stocks is None:
 def update_chart(stocks):
     if stocks is None:
         return {}
@@ -69,7 +56,7 @@ def update_chart(stocks):
             high=df['CH_TRADE_HIGH_PRICE'],
             low=df['CH_TRADE_LOW_PRICE'],
             close=df['CH_CLOSING_PRICE']
-        )],  layout=dict(title=sym, height=500, margin=dict(l=100, r=0,  t=50,  b=0))
+        )], layout=dict(title=sym, height=500, margin=dict(l=100, r=0, t=50, b=0))
     )
     return fig
 
