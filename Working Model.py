@@ -3,6 +3,8 @@ import dash
 from dash import dcc, html
 from nsepython import equity_history
 import plotly.graph_objects as go
+from dash.dependencies import Input, Output, State
+import dash_bootstrap_components as dbc
 import datetime
 
 # Read the image file
@@ -12,7 +14,10 @@ with open("Assets/stock-icon.png", "rb") as f:
 # Encode the image as a base64 string
 encoded_image = base64.b64encode(image_data).decode()
 
-app = dash.Dash(__name__)
+start = (datetime.datetime.today() - datetime.timedelta(days=90)).strftime("%d-%m-%Y")
+end = datetime.datetime.today().strftime("%d-%m-%Y")
+
+app = dash.Dash()
 
 app.layout = html.Div([
     html.Div([
@@ -26,26 +31,42 @@ app.layout = html.Div([
             id='stock_input',
             placeholder='Ex: SBIN',
             type='text',
-            value='SBIN'
+            value=''
         ),
         html.Button(id="submit-button",n_clicks=0, children="Submit")],className="input"),
     html.Div(
-        style={'width':'1100px', 'overflow':'auto', 'align':'center'},
+        style={'width':'1100px', 'overflow':'auto'},
         children=[dcc.Graph(id="Stock Chart", figure={})],
         className="frame"
-    )
+    ),
+    html.Div(
+        id='alert-container',children=[
+            dbc.Alert(id='alert', children='Invalid Stock Code', style={'display':'none'},is_open='')
+        ])
 ], className="main-div")
 
 @app.callback(
-    dash.dependencies.Output('Stock Chart', 'figure'),
-    [dash.dependencies.Input('stock_input', 'value')]
+    [Output('Stock Chart', 'figure'), Output('alert','is_open')],
+    [Input('submit-button', 'n_clicks')],
+    [State('stock_input', 'value')]
 )
-def update_chart(stocks):
-    if stocks is None:
-        return {}
-    start = (datetime.datetime.today() - datetime.timedelta(days=90)).strftime("%d-%m-%Y")
-    end = datetime.datetime.today().strftime("%d-%m-%Y")
-    sym = stocks
+def update_chart(n_clicks,stocks):
+    if stocks is None or stocks=='':
+        return {
+            'data': [],
+            'layout':{'title':'No Data Entered'}
+        }, True
+
+    try:
+        equity_history(stocks,'EQ','01-01-2023','01-02-2023')
+    except Exception as e:
+        return( 
+            {
+            'data': [],
+            'layout':{'title':'No Data Entered'}
+        }, True )
+
+    sym = stocks.upper()
     ser = "EQ"
     df = equity_history(stocks, ser, start, end)
 
@@ -58,7 +79,7 @@ def update_chart(stocks):
             close=df['CH_CLOSING_PRICE']
         )], layout=dict(title=sym, height=500, margin=dict(l=100, r=0, t=50, b=0))
     )
-    return fig
+    return fig, False
 
 if __name__ == "__main__":
     app.run_server(debug=True)
