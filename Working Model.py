@@ -1,19 +1,27 @@
-from turtle import position, width
+import base64
 import dash
-from dash import dcc
-from dash import html
+from dash import dcc, html
 from nsepython import equity_history
 import plotly.graph_objects as go
 import datetime
 
-app= dash.Dash()
+# Read the image file
+with open("Assets/stock-icon.png", "rb") as f:
+    image_data = f.read()
 
-app.layout= html.Div([
-    html.Div([html.H1(children="Stock App"),
-             html.Img(src="Assets/stock-icon.png")],className="banner"),
-    html.Div(
-        [html.Label("Enter a valid Indian Stock Code"),
-         html.Br(),
+# Encode the image as a base64 string
+encoded_image = base64.b64encode(image_data).decode()
+
+app = dash.Dash(__name__)
+
+app.layout = html.Div([
+    html.Div([
+        html.H1(children="Stock App"),
+        html.Img(src=f"data:image/png;base64,{encoded_image}", style={'width': '100px'})
+    ], className="banner"),
+    html.Div([
+        html.Label("Enter a valid Indian Stock Code"),
+        html.Br(),
         dcc.Input(
             id='stock_input',
             placeholder='Ex: SBIN',
@@ -24,8 +32,8 @@ app.layout= html.Div([
     ),
     html.Div(
         style={'width':'1100px', 'overflow':'auto', 'align':'center'},
-        children=[dcc.Graph(id="Stock Chart",
-                  figure={})],className="frame"
+        children=[dcc.Graph(id="Stock Chart", figure={})],
+        className="frame"
     )
 ],className="main-div")
 
@@ -34,9 +42,8 @@ app.layout= html.Div([
     [dash.dependencies.Input("submit-button", "n_clicks")],
     [dash.dependencies.State('stock_input', 'value')]
 )
-
-def update_chart(n_clicks,stocks):
-    if  stocks is None:
+def update_chart(stocks):
+    if stocks is None:
         return {}
     start= str((datetime.datetime.today()-datetime.timedelta(days=365)).strftime("%d-%m-%Y"))
     end=str(datetime.datetime.today().strftime("%d-%m-%Y"))
@@ -51,7 +58,7 @@ def update_chart(n_clicks,stocks):
             high=df['CH_TRADE_HIGH_PRICE'],
             low=df['CH_TRADE_LOW_PRICE'],
             close=df['CH_CLOSING_PRICE']
-        )],layout=dict(title=sym, height=500, margin=dict(l=100, r=0,t=50,b=0))
+        )], layout=dict(title=sym, height=500, margin=dict(l=100, r=0, t=50, b=0))
     )
     return fig
 
