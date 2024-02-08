@@ -27,31 +27,29 @@ app.layout = html.Div([
             placeholder='Ex: SBIN',
             type='text',
             value='SBIN'
-        ),
-        html.Button(id="submit-button",n_clicks=0, children="Submit")],className="input"
-    ),
+        )
+    ], className="input"),
     html.Div(
         style={'width':'1100px', 'overflow':'auto', 'align':'center'},
         children=[dcc.Graph(id="Stock Chart", figure={})],
         className="frame"
     )
-],className="main-div")
+], className="main-div")
 
 @app.callback(
     dash.dependencies.Output('Stock Chart', 'figure'),
-    [dash.dependencies.Input("submit-button", "n_clicks")],
-    [dash.dependencies.State('stock_input', 'value')]
+    [dash.dependencies.Input('stock_input', 'value')]
 )
 def update_chart(stocks):
     if stocks is None:
         return {}
-    start= str((datetime.datetime.today()-datetime.timedelta(days=365)).strftime("%d-%m-%Y"))
-    end=str(datetime.datetime.today().strftime("%d-%m-%Y"))
-    sym=stocks
-    ser="EQ"
-    df=equity_history(stocks,ser,start,end)
+    start = (datetime.datetime.today() - datetime.timedelta(days=90)).strftime("%d-%m-%Y")
+    end = datetime.datetime.today().strftime("%d-%m-%Y")
+    sym = stocks
+    ser = "EQ"
+    df = equity_history(stocks, ser, start, end)
 
-    fig=go.Figure(data=[
+    fig = go.Figure(data=[
         go.Candlestick(
             x=df['CH_TIMESTAMP'],
             open=df['CH_OPENING_PRICE'],
@@ -62,5 +60,5 @@ def update_chart(stocks):
     )
     return fig
 
-if __name__== "__main__":
+if __name__ == "__main__":
     app.run_server(debug=True)
