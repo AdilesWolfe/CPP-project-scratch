@@ -41,7 +41,7 @@ app.layout = html.Div([
     ),
     html.Div(
         id='alert-container',children=[
-            dbc.Alert(id='alert', children='Invalid Stock Code', style={'display':'none'},is_open='')
+            dbc.Alert(id='alert', children='Invalid Stock Code', color="warning",is_open='')
         ])
 ], className="main-div")
 
@@ -60,6 +60,7 @@ def update_chart(n_clicks,stocks):
     try:
         equity_history(stocks,'EQ','01-01-2023','01-02-2023')
     except Exception as e:
+        print(f"Error: {e}")
         return( 
             {
             'data': [],
