@@ -84,3 +84,10 @@
     font-size: 20px;
     color-scheme:  dark;
   }
+
+.alert-container {
+    background-color: #c9bc06;
+    text-align: center;
+    padding: 5px;
+    font-size: larger;
+}
