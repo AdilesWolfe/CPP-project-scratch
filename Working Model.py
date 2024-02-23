@@ -40,6 +40,7 @@ app.layout = html.Div(
                 html.Label("Select a start date"),
                 dcc.DatePickerSingle(
                     id='start-date',
+                    display_format=('DD/MM/YYYY'),
                     min_date_allowed=datetime.datetime(2022, 1, 1),
                     max_date_allowed=datetime.datetime.today(),
                     initial_visible_month=datetime.datetime(2022, 1, 1),
@@ -48,6 +49,7 @@ app.layout = html.Div(
                 html.Label("Select an end date"),
                 dcc.DatePickerSingle(
                     id='end-date',
+                    display_format=('DD/MM/YYYY'),
                     min_date_allowed=datetime.datetime(2022, 1, 1),
                     max_date_allowed=datetime.datetime.today(),
                     initial_visible_month=datetime.datetime.today(),
@@ -64,7 +66,7 @@ app.layout = html.Div(
             id='alert-container',
             children=[
                 dbc.Alert(id='alert', children='Invalid Stock Code', color="warning", is_open='False', dismissable="True")
-            ])
+            ], className='alert-container' )
     ],
     className="main-div"
 )
