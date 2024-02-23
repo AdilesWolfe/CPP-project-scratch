@@ -5,7 +5,8 @@ from nsepython import equity_history
 import plotly.graph_objects as go
 from dash.dependencies import Input, Output, State
 import dash_bootstrap_components as dbc
-import datetime
+from datetime import datetime as dt
+from AI_model import prediction
 
 # Read the image file
 with open("Assets/stock-icon.png", "rb") as f:
@@ -41,19 +42,19 @@ app.layout = html.Div(
                 dcc.DatePickerSingle(
                     id='start-date',
                     display_format=('DD/MM/YYYY'),
-                    min_date_allowed=datetime.datetime(2022, 1, 1),
-                    max_date_allowed=datetime.datetime.today(),
-                    initial_visible_month=datetime.datetime(2022, 1, 1),
-                    date=datetime.datetime(2022, 1, 1)
+                    min_date_allowed=dt(2022, 1, 1),
+                    max_date_allowed=dt.today(),
+                    initial_visible_month=dt(2022, 1, 1),
+                    date=dt(2022, 1, 1)
                 ),
                 html.Label("Select an end date"),
                 dcc.DatePickerSingle(
                     id='end-date',
                     display_format=('DD/MM/YYYY'),
-                    min_date_allowed=datetime.datetime(2022, 1, 1),
-                    max_date_allowed=datetime.datetime.today(),
-                    initial_visible_month=datetime.datetime.today(),
-                    date=datetime.datetime.today()
+                    min_date_allowed=dt(2022, 1, 1),
+                    max_date_allowed=dt.today(),
+                    initial_visible_month=dt.today(),
+                    date=dt.today()
                 ),
             ],
             className="input",
@@ -84,8 +85,8 @@ def update_chart(n_clicks, start_date, end_date, stocks):
         }, True
 
     try:
-        start_date = datetime.datetime.strptime(start_date.split('T')[0], '%Y-%m-%d').strftime('%d-%m-%Y')
-        end_date = datetime.datetime.strptime(end_date.split('T')[0], '%Y-%m-%d').strftime('%d-%m-%Y')
+        start_date = dt.strptime(start_date.split('T')[0], '%Y-%m-%d').strftime('%d-%m-%Y')
+        end_date = dt.strptime(end_date.split('T')[0], '%Y-%m-%d').strftime('%d-%m-%Y')
         equity_history(stocks, 'EQ', start_date, end_date)
     except Exception as e:
         print(f"Error: {e}")
@@ -106,7 +107,7 @@ def update_chart(n_clicks, start_date, end_date, stocks):
             low=df['CH_TRADE_LOW_PRICE'],
             close=df['CH_CLOSING_PRICE']
         )],
-        layout=dict(title=sym, height=500, margin=dict(l=100, r=0, t=50, b=0))
+        layout=dict(title=(sym+"📊"), height=500, margin=dict(l=100, r=0, t=50, b=0))
     )
     return Candlefig, False
 
