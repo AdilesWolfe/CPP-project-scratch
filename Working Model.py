@@ -48,7 +48,7 @@ app.layout = html.Div(
                     type='text',
                     value=''
                 ),
-                html.Button(id="submit-button", n_clicks=0, children="Submit"),
+                html.Button("Submit", id="submit-button", n_clicks=0),
                 
             ],
             className="input"
@@ -75,12 +75,16 @@ app.layout = html.Div(
         html.Div([
             html.Label("Enter number of days to forecast"),
             html.Br(),
-            dcc.Input(id='forecast_input', 
+            dcc.Input(id='forecast-input', 
                       type='text',
                       value='',
                       placeholder='Ex.10 '),
-            html.Button('Forecast', id='forecast-btn', )
+            html.Button('Forecast', id='forecast-btn', n_clicks=0)
             ], className="input"
+        ),
+        html.Div(
+            dcc.Graph(id='forecast-graph', figure={}),
+            className='frame'
         )
     ],
     className="main-div"
@@ -120,5 +124,17 @@ def update_chart(n_clicks, start_date, end_date, stocks):
    
     return fig, False
 
+# Callback to generate forecast and display
+@app.callback(
+    [Output('forecast-graph', 'figure')],
+    [Input('forecast-btn', 'n_clicks')],
+    [State('forecast-input','value'), State('stock_input', 'value')]
+)
+def generate_forecast(n_clicks,days,stocks):
+    if not n_clicks or days is None or stocks is None :
+        return {}
+    else:
+        fig=(prediction(stocks, days))
+    return [fig]
 if __name__ == "__main__":
     app.run_server(debug=True)

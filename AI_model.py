@@ -1,7 +1,7 @@
 def prediction(stocks, n_days):
     import dash
     import dash_core_components as dcc
-    import dash_html_components as html
+    from dash import html as html
     from datetime import datetime as dt
     from nsepython import equity_history
     from dash.dependencies import Input, Output, State
@@ -19,7 +19,7 @@ def prediction(stocks, n_days):
     #load the data
     st=(dt.today()-timedelta(days=100)).strftime("%d-%m-%Y")
     en=dt.today().strftime("%d-%m-%Y")
-    df=equity_history('{stocks}','EQ',st, en)
+    df=equity_history(stocks,'EQ',st, en)
     df['CH_TIMESTAMP']=df.index
 
     days=list()
@@ -62,8 +62,9 @@ def prediction(stocks, n_days):
 
     rbf_svr.fit(x_train, y_train)
 
+    n_days=int(n_days)
     output_days = list()
-    for i in range(1, n_days):
+    for i in range(1, n_days+1):
         output_days.append([i + x_test[-1][0]])
 
     dates = []
@@ -80,7 +81,7 @@ def prediction(stocks, n_days):
             mode='lines+markers',
             name='data'))
     fig.update_layout(
-        title="Predicted Close Price of next " + str(n_days - 1) + " days",
+        title="Predicted Close Price of next " + str(n_days) + " days for "+stocks,
         xaxis_title="Date",
         yaxis_title="Closed Price",
         # legend_title="Legend Title",
