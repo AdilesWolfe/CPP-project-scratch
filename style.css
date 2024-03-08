@@ -1,0 +1,151 @@
+.banner {
+    height: 70px;
+    margin: 0px -10px 10px;
+    background-color: #13bbbb;
+    border-radius: 10px; /* Add rounded border radius */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.banner h1 {
+    color: rgb(0, 0, 0);
+    padding-top: auto;
+    margin-left: 2%;
+    display: inline-block;
+    position: center;
+    font-family:monospace;
+    font-weight: bold;
+}
+
+.banner Img {
+    position: relative;
+    float: right;
+    right: 10px;
+    height: 75px;
+}
+
+.main-div {
+    background-color: #ab73ff;
+    padding: 20px;
+    display: flow;
+    height: 220vh; 
+    /*sufficient for without foreign stock*/
+    width: auto;
+}
+
+.frame {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 2px;
+    box-shadow: 0px 0px 10px rgba(191, 188, 188, 0.219);
+    align-self: center;
+    overflow-x: scroll;
+}
+
+@media (max-width: 768px) {
+    .banner {
+        flex-direction: column;
+        align-items: center;
+    }
+    .banner h1 {
+        margin-top: 10px;
+    }
+    .banner Img {
+        margin-top: 10px;
+        margin-right: 0;
+    }
+    .frame {
+        margin-top: auto;
+        overflow-x: auto;
+    }
+}
+
+.input {
+    color: azure;
+    margin: 0 auto;
+    display: inline-block;
+    padding: 2%;
+    font-size: 20px;
+    position: relative; /* Add position: relative to create a positioning context */
+    
+}
+
+.input input {
+    font-size: large;
+    color-scheme: dark;
+    
+}
+
+.alert-container {
+    background-color: #000000;
+    text-align: center;
+    padding: 5px;
+    font-size: larger;
+    transform: 20px;
+    color: rgb(128, 255, 0);
+    visibility: hidden;
+    transform: translate();
+}
+
+.submit-button{
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    position: absolute;
+    font-weight: bolder;
+    font-size: larger;
+    padding: 10px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 20px;
+    margin-left: -6px;
+    border-color: solid black;
+    
+}
+.submit-button:hover {
+    background-color: #000000;
+    color: #c3ff00;
+    font-size:2vb;
+    border-radius: 20px;
+}
+
+.input-label{
+    color: white;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.input-labell{
+    color: white;
+    margin-right: 10px;
+    font-size: 20px;
+}
+.input-field{
+    margin-left: 10px;
+    color: rgb(151, 151, 151);
+    display: flex;
+    margin-bottom: 10px;
+}
+.input-fieldd{
+    margin-left: 10px;
+    color: rgb(151, 151, 151);
+    display: flex;
+    margin-bottom: 10px;
+    padding: 7px;
+}
+
+.input-container{
+    margin-top: 20px;
+}
+
+.dash-debug-menu {
+    background-color: black;
+    color: white;
+}
+.forecast-graph-container{
+    margin-top: 20px; /* Add margin to the top of the forecast graph */
+}
