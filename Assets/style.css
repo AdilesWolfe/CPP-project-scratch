@@ -27,6 +27,8 @@
     background-color: #0e0942;
     padding: 20px;
     display: flow;
+    height: 300vh;
+    width: auto;
 }
 
 .frame {
@@ -36,7 +38,8 @@
     border-radius: 2px;
     box-shadow: 0px 0px 10px rgba(191, 188, 188, 0.219);
     align-self: center;
-    overflow: auto
+    overflow-x: scroll;
+    display: none if [] else block;
 }
 
 @media (max-width: 768px) {
@@ -82,11 +85,9 @@
 
   .input input{
     font-size: 20px;
-    color-scheme:  dark;
   }
 
 .alert-container {
-    background-color: #c9bc06;
     text-align: center;
     padding: 5px;
     font-size: larger;
