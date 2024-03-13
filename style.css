@@ -26,7 +26,7 @@
 }
 
 .main-div {
-    background-color: #ab73ff;
+    background-color: #ffffff; /*#oofff2*/
     padding: 20px;
     display: flow;
     height: 220vh; 
@@ -42,7 +42,20 @@
     box-shadow: 0px 0px 10px rgba(191, 188, 188, 0.219);
     align-self: center;
     overflow-x: scroll;
+    border: 2px solid black; /* Add border */
 }
+
+.forecast-graph {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 2px;
+    box-shadow: 0px 0px 10px rgba(191, 188, 188, 0.219);
+    align-self: center;
+    overflow-x: scroll;
+    border: 2px solid black; /* Add border */
+}
+
 
 @media (max-width: 768px) {
     .banner {
@@ -90,20 +103,21 @@
 }
 
 .submit-button{
-    background-color: #ffffff;
+    background-color: green;
     color: rgb(0, 0, 0);
     position: absolute;
     font-weight: bolder;
-    font-size: larger;
+    font-size: 2vb;
     padding: 10px 20px;
     border-radius: 15px;
     cursor: pointer;
     display: flex;
-    padding-left: 20px;
+    padding-left : 20px;
     padding-right: 20px;
-    margin-top: 20px;
+    margin-top: 40px;
     margin-left: -6px;
     border-color: solid black;
+    align-self: right;
     
 }
 .submit-button:hover {
@@ -132,20 +146,73 @@
 }
 .input-fieldd{
     margin-left: 10px;
-    color: rgb(151, 151, 151);
+    color: rgb(0, 0, 0) !important;
     display: flex;
     margin-bottom: 10px;
     padding: 7px;
 }
 
 .input-container{
+    color: #000000 !important;
     margin-top: 20px;
+    height: auto;
 }
 
-.dash-debug-menu {
-    background-color: black;
-    color: white;
-}
+
 .forecast-graph-container{
     margin-top: 20px; /* Add margin to the top of the forecast graph */
+}
+.loading-outputt{
+  color:#000000;
+  margin-top: -370px;
+}
+/* Custom CSS to change the color of the Dash debug menu */
+.dash-debug-menu {
+    background-color: black !important;
+    color: white !important;
+}
+
+.dash-debug-menu:hover{
+    background-color: rgb(142, 142, 142) !important;
+}
+
+.para-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.para1,
+.para2 {
+    border: 3px solid rgb(0, 0, 0);
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 45px;
+    font-family: sense;
+    color: rgb(0, 0, 0);
+    width: calc(50% - 20px); /* Adjust width to leave space between paragraphs */
+    line-height: 1.5;
+}
+.hhr{
+    color:black;
+    background-color: #000000;
+    fill: #000000;
+    opacity: 100%;
+}
+/* For Chrome, Safari, and Opera */
+
+::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ffffff; /* Color of the scrollbar thumb */
+    border-radius: 6px; /* Rounded corners of the scrollbar thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar thumb on hover */
 }
