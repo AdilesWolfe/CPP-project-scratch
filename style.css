@@ -2,7 +2,7 @@
     height: 70px;
     margin: 0px -10px 10px;
     background-color: #13bbbb;
-    border-radius: 10px; /* Add rounded border radius */
+    border-radius: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -10,28 +10,23 @@
 
 .banner h1 {
     color: rgb(0, 0, 0);
-    padding-top: auto;
     margin-left: 2%;
-    display: inline-block;
-    position: center;
-    font-family:monospace;
+    font-family: monospace;
     font-weight: bold;
 }
 
-.banner Img {
-    position: relative;
-    float: right;
-    right: 10px;
+.banner img {
     height: 75px;
 }
 
 .main-div {
-    background-color: #ffffff; /*#oofff2*/
     padding: 20px;
-    display: flow;
-    height: 220vh; 
-    /*sufficient for without foreign stock*/
-    width: auto;
+    height: auto; /* Changed to auto */
+    width: 100%; /* Changed to 100% */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px;
 }
 
 .frame {
@@ -40,9 +35,8 @@
     background-color: white;
     border-radius: 2px;
     box-shadow: 0px 0px 10px rgba(191, 188, 188, 0.219);
-    align-self: center;
     overflow-x: scroll;
-    border: 2px solid black; /* Add border */
+    border: 2px solid black;
 }
 
 .forecast-graph {
@@ -51,10 +45,22 @@
     background-color: white;
     border-radius: 2px;
     box-shadow: 0px 0px 10px rgba(191, 188, 188, 0.219);
-    align-self: center;
     overflow-x: scroll;
-    border: 2px solid black; /* Add border */
+    border: 2px solid black;
 }
+
+
+.main-div {
+    padding: 20px; /* Ek baar hi define karein */
+    display: flow; /* Yeh property hata dein agar aapko nahi lagta yeh zaruri hai */
+    height: 200vh; 
+    /*sufficient for without foreign stock*/
+    width: auto;
+    background-size: cover; /* Ensure the background image covers the entire container */
+     background-position: center; /* Center the background image */
+      background-repeat: no-repeat; /* Prevent the background image from repeating */
+}
+
 
 
 @media (max-width: 768px) {
@@ -103,7 +109,7 @@
 }
 
 .submit-button{
-    background-color: green;
+    background-color: rgb(26, 237, 216);
     color: rgb(0, 0, 0);
     position: absolute;
     font-weight: bolder;
@@ -114,7 +120,7 @@
     display: flex;
     padding-left : 20px;
     padding-right: 20px;
-    margin-top: 40px;
+    margin-top: 10px;
     margin-left: -6px;
     border-color: solid black;
     align-self: right;
@@ -156,6 +162,13 @@
     color: #000000 !important;
     margin-top: 20px;
     height: auto;
+    height: auto; /* Changed to auto */
+    width: 100%; /* Changed to 100% */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px;
+
 }
 
 
@@ -183,12 +196,12 @@
 
 .para1,
 .para2 {
-    border: 3px solid rgb(0, 0, 0);
+    border: 3px solid rgb(255, 255, 255);
     padding: 20px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
     border-radius: 45px;
     font-family: sense;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     width: calc(50% - 20px); /* Adjust width to leave space between paragraphs */
     line-height: 1.5;
 }

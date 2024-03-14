@@ -16,8 +16,16 @@ app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 with open("Assets/stock-icon.png", "rb") as f:
     image_data = f.read()
 
+with open("Assets/ne.png","rb") as l:
+    image_dat = l.read()
+
+with open("Assets/newwww.png","rb") as n:
+    image_da = n.read()
+
 # Encode the image as a base64 string
 encoded_image = base64.b64encode(image_data).decode()
+encoded_imagee = base64.b64encode(image_dat).decode()
+encoded_imageee = base64.b64encode(image_da).decode()
 
 def get_stock_graph(df, stock_name):
     Candlefig = go.Figure(data=[
@@ -68,11 +76,8 @@ app.layout = html.Div(
                 
             ],
             className="input-container",
-            style={'border': '3px solid white ', 'padding': '30px', 'background-color': 'black', 'border-radius': '10px'}
+            style={'border': '3px solid white ', 'padding': '60px', 'background-color': 'black', 'border-radius': '40px', 'background-image': f'url(data:image/png;base64,{encoded_imagee})'}
         ),
-        html.Br(),
-        html.Br(),
-        html.Br(),
         html.Hr(style={'padding':'5px'},className='hhr'),
         html.Div(
             [
@@ -96,7 +101,8 @@ app.layout = html.Div(
                         )
                     ], className='loading-outputt'
                 )
-            ], className='main-div'
+            ], className='main-div',
+            style={'background-image': f'url(data:image/png;base64,{encoded_imageee})'}
         )
     ]
 )
