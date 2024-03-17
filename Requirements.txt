@@ -1,0 +1,11 @@
+Dash
+Sklearn.model_selection
+nsepython
+plotly.graph_objects
+Date Time
+base64
+Dash.dependences
+pandas
+numpy
+plotly.express
+Dash_core_components
