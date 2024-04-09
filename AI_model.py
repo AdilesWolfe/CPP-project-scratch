@@ -1,6 +1,7 @@
+
 def prediction(stocks, n_days):
     import dash
-    import dash_core_components as dcc
+    from dash import dcc
     from dash import html as html
     from datetime import datetime as dt
     from nsepython import equity_history
@@ -13,7 +14,7 @@ def prediction(stocks, n_days):
     from sklearn.model_selection import train_test_split
     from sklearn.model_selection import GridSearchCV
     import numpy as np
-    from sklearn.preprocessing import MinMaxScaler
+    from sklearn.svm import SVR
     from datetime import date, timedelta
 
     #load the data
