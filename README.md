@@ -1,5 +1,4 @@
-# CPP project
- we will create our own code here
- 
- Remember to commit your changes in any file in a new branch with your name
- For example, Shahid will commit all his files in the branch named Shahid or something.
+# InvestIQ
+
+An open-souce AI-based real time stock prediction model
+
