@@ -1,43 +1,75 @@
+body {
+    background-color: #000; /* Black background color */
+    color: #fff; /* White text color */
+    font-family: Arial, sans-serif; /* Use a common sans-serif font */
+    margin: 0; /* Remove default body margin */
+}
 .banner {
-    height: 70px;
+    height: 80px;
     margin: 0px -10px 10px;
-    background-color: #13bbbb;
-    border-radius: 2px;
+    background-color: #000000;
+    border-radius: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .banner h1 {
-    color: antiquewhite;
-    padding-top: auto;
+    color: rgb(0, 0, 0);
     margin-left: 2%;
-    display: inline-block;
-    position: center;
+    font-family: monospace;
+    font-weight: bold;
 }
 
-.banner Img {
-    position: relative;
-    float: right;
-    right: 10px;
-    height: 75px;
+.banner img {
+    height: 70px;
+    margin-right: 15px;
 }
 
 .main-div {
-    background-color: #0e0942;
     padding: 20px;
-    display: flow;
+    height: auto; /* Changed to auto */
+    width: 100%; /* Changed to 100% */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px;
 }
 
 .frame {
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 2px;
+    box-shadow: 0px 0px 10px rgba(191, 188, 188, 0.219);
+    overflow-x: scroll;
+    border: 2px solid black;
+}
+
+.forecast-graph {
     margin: 20px auto;
     padding: 20px;
     background-color: white;
     border-radius: 2px;
     box-shadow: 0px 0px 10px rgba(191, 188, 188, 0.219);
-    align-self: center;
-    overflow: auto
+    overflow-x: scroll;
+    border: 2px solid black;
 }
+
+
+.main-div {
+    padding: 20px; /* Ek baar hi define karein */
+    display: flow; /* Yeh property hata dein agar aapko nahi lagta yeh zaruri hai */
+    height: 200vh; 
+    /*sufficient for without foreign stock*/
+    width: auto;
+    background-size: cover; /* Ensure the background image covers the entire container */
+     background-position: center; /* Center the background image */
+      background-repeat: no-repeat; /* Prevent the background image from repeating */
+    margin-top: -15px;
+}
+
+
 
 @media (max-width: 768px) {
     .banner {
@@ -52,42 +84,539 @@
         margin-right: 0;
     }
     .frame {
-        margin: 10px 0;
+        margin-top: auto;
         overflow-x: auto;
     }
+
 }
 
 .input {
     color: azure;
-    margin: 0 auto;
-    display: block;
-    width: fit-content;
+    margin-top: -10px;
+    display: inline-block;
     padding: 2%;
     font-size: 20px;
+    position: relative; /* Add position: relative to create a positioning context */
+    
 }
 
-.input button {
-    background-color: #bb8613;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 2px;
-    margin-left: 10px;
-    cursor: pointer;
-  }
-  
-.input button:hover {
-    background-color: #c9bc06;
-  }
+.input input {
+    font-size: large;
+    color-scheme: dark;
 
-  .input input{
-    font-size: 20px;
-    color-scheme:  dark;
-  }
+    
+}
 
 .alert-container {
-    background-color: #c9bc06;
+    background-color: #000000;
     text-align: center;
     padding: 5px;
     font-size: larger;
+    transform: 20px;
+    color: rgb(128, 255, 0);
+    visibility: hidden;
+    transform: translate();
+}
+
+.submit-button{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    position: absolute;
+    font-weight: bolder;
+    font-size: 2vb;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    padding-left : 20px;
+    padding-right: 20px;
+    margin-top: -10px;
+    margin-left: -6px;
+    border-color: solid black;
+    align-self: right;
+    
+}
+.submit-button:hover {
+    background-color: #000000;
+    color: #c3ff00;
+    font-size:2vb;
+    border-radius: 45px;
+    border-color: #ffffff !important;
+}
+
+.input-label{
+    color: white;
+    margin-top: -10px;
+    font-size: 20px;
+}
+
+.input-labell{
+    color: white;
+    margin-top: -10px;
+    font-size: 20px;
+}
+.input-field{
+    margin-top: -10px;
+    margin-left: 10px;
+    color: rgb(151, 151, 151);
+    display: flex;
+    margin-bottom: 10px;
+    border-radius: 25px !important;
+}
+.input-fieldd{
+    margin-left: 10px;
+    border-color: rgb(0, 0, 0) !important;
+    display: flex;
+    margin-bottom: 10px;
+    padding: 7px;
+
+}
+
+.input-container{
+    color: #000000 !important;
+    background-color: #000000;
+    margin-top: -10px;
+    height: auto; /* Changed to auto */
+    width: 100%; /* Changed to 100% */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: -60px;
+}
+
+
+.forecast-graph-container{
+    margin-top: 20px; /* Add margin to the top of the forecast graph */
+}
+.loading-outputt{
+  color:#000000;
+  margin-top: -370px;
+}
+/* Custom CSS to change the color of the Dash debug menu */
+.dash-debug-menu {
+    background-color: black !important;
+    color: white !important;
+    border: 3px solid white !important;
+}
+
+.dash-debug-menu:hover{
+    background-color: rgb(74, 6, 89) !important;
+}
+
+.para-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.para1,
+.para2 {
+    border: 3px solid rgb(255, 255, 255);
+    padding: 20px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 45px;
+    font-family: sense;
+    color: rgb(255, 255, 255);
+    width: calc(50% - 20px); /* Adjust width to leave space between paragraphs */
+    line-height: 1.5;
+    margin-top: 20px;
+}
+.hhr{
+    color:black;
+    background-color: #000000;
+    fill: #000000;
+    opacity: 100%;
+    margin-top: -2px;
+}
+/* For Chrome, Safari, and Opera */
+
+::-webkit-scrollbar {
+    width: 0px; /* Width of the scrollbar */
+    display: none;
+    visibility: hidden !important;
+}
+
+::-webkit-scrollbar-track {
+    background: #000000; /* Color of the scrollbar track */
+    visibility: hidden;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #000000; /* Color of the scrollbar thumb */
+    border-radius: 6px; /* Rounded corners of the scrollbar thumb */
+    visibility: hidden;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar thumb on hover */
+    visibility: hidden;
+}
+.body{
+    background-color: #000000 !important;
+}
+.ml-auto:hover{
+    background-color: black;
+}
+
+/* About Us Page */
+.about-container {
+    color: rgb(255, 255, 255) !important;
+    background-color: black !important ; /* Change background color to black */
+    padding-bottom: 20px;
+    padding-left:5px;
+}
+
+.about-container h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #ffffff !important;
+    background-color: #000000 !important;
+
+}
+
+.about-container .team-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+
+.about-container .member-box {
+    width: 200px;
+    margin: 0 10px 40px;
+    text-align: center;
+}
+.about-container h5{
+    font-size: medium;
+}
+
+.about-container h1{
+    margin-top: -50px;
+    color: #c3ff00;
+}
+
+.about-container h2{
+    color: #c3ff00;
+}
+
+.about-container .member-box img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 15px rgb(54, 5, 118);
+}
+
+.about-container .member-box img:hover {
+    transform: scale(1.1);
+}
+
+.about-container .member-box p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.about-container .member-box .social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.about-container .member-box .social-icons a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.about-container .member-box .social-icons a:hover {
+    transform: translateY(-5px);
+}
+
+.about-container .member-box .social-icons img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px rgb(255, 255, 255);
+}
+
+.about-container .member-box .social-icons img:hover {
+    filter: brightness(120%);
+}
+.member-box a:last-child img[src*="github"] {
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: inline-block !important;
+}
+
+
+
+/* Set background color to black for the entire page */
+
+
+/* CSS for Top 50 Indian Stocks */
+.stock-list {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #333; /* Dark gray background color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+.stock-list-items {
+    padding: 0;
+    margin: 0;
+}
+
+.stock-list-items li {
+    margin-bottom: 10px;
+    padding: 15px; /* Increase padding for better spacing */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #444; /* Dark gray background color */
+    list-style: none; /* Remove default bullet style */
+}
+
+.stock-list-items li::before {
+    content: "\2022"; /* Use bullet character */
+    font-size: 20px; /* Adjust bullet size */
+    color: #fff; /* White bullet color */
+    display: inline-block; /* Ensure bullet is properly aligned */
+    width: 1em; /* Set width for consistent spacing */
+    margin-left: -1em; /* Adjust margin for proper alignment */
+}
+/* CSS for Why InvestIQ */
+/* CSS for the Why InvestIQ page */
+
+.why-investiq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    border-radius: 10px;
+    background-color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #fff;
+}
+
+.why-investiq-header {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.why-investiq-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.why-investiq-list li {
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #444;
+    border: 2px solid #fff;
+    font-size: 18px;
+    position: relative;
+}
+
+.why-investiq-list li::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 2px;
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.why-investiq-list li::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -4px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent #444;
+}
+
+/* Container for About Us Page */
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styles */
+.about-header {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Paragraph Styles */
+.about-paragraph {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Team Member Styles */
+.team-member {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.team-member h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.team-member p {
+    font-size: 16px;
+    color: #777;
+}
+
+/* Links Styles */
+.link-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.link-container a {
+    color: #007bff;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.link-container a:hover {
+    color: #0056b3;
+}
+
+/* CSS for Disclaimer Section */
+
+/* Disclaimer Container */
+.disclaimer-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Disclaimer Header */
+.disclaimer-header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Disclaimer Content */
+.disclaimer-content {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+/* Disclaimer Link */
+.disclaimer-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.disclaimer-link a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.disclaimer-link a:hover {
+    color: #0056b3;
+}
+/* styles.css */
+
+/* Custom styles for the home page */
+
+.home-header {
+    color: #007bff; /* Change the color to a blue shade */
+    font-size: 40px; /* Increase the font size */
+    text-align: center;
+    margin-top: 50px;
+}
+
+.features-header {
+    color: #28a745; /* Change the color to a green shade */
+    font-size: 28px; /* Increase the font size */
+    text-align: center;
+    margin-top: 50px;
+}
+
+.feature-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.feature-box {
+    text-align: center;
+    width: 220px; /* Increase the width */
+    padding: 20px;
+    border: 2px solid #6c757d; /* Add a border */
+    border-radius: 10px; /* Add border-radius for rounded corners */
+    background-color: #000000; /* Change the background color */
+}
+
+.feature-box img {
+    width: 120px; /* Increase the width */
+    height: 120px; /* Increase the height */
+    border-radius: 50%; /* Make the images circular */
+    border: 2px solid #6c757d; /* Add a border */
+}
+
+.feature-box h5 {
+    margin-top: 15px; /* Adjust the margin */
+    font-size: 18px; /* Increase the font size */
+}
+
+.feature-box p {
+    color: #ffffff; /* Change the color */
+    font-size: 16px; /* Increase the font size */
+}
+
+.how-to-use-header {
+    color: #dc3545; /* Change the color to a red shade */
+    font-size: 28px; /* Increase the font size */
+    text-align: center;
+    margin-top: 50px;
+}
+
+.how-to-use-steps {
+    font-size: 18px; /* Increase the font size */
+    margin-top: 20px;
+}
+
+.how-to-use-steps p {
+    margin-bottom: 15px; /* Adjust the margin */
 }
